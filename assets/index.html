@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rope Climb - Home</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="greeting_contain">
+            <h1 id="welcome">Welcome!</h1>
+        </div>
+        <div id="message">
+            <h3>Welcome to Rope Climb!</h3>
+            <p>Sign up or sign in to join in on the fun!</p>
+            <p>Play against your friends in a competitive race to the top!</p>
+        </div>
+
+        <div id="buttons">
+                <a href="sign_up.html"><img src="images/Sign_Up.png" id="sign_in" class="btn"/></a>
+                <a href="Sign_In.html"><img src="images/Sign_In.png" id="sign_up" class="btn"/></a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+    <script type="text/javascript">
+      io.socket.get('/player/1', function (data, jwr) {
+        console.log('Server responded with status code ' + jwr.statusCode + ' and data: ', data);
+      });
+      io.socket.on('hello', function (data) {
+        console.log('Socket `' + data.id + '` joined the party!');
+      });
+    </script>
+</body>
+</html>

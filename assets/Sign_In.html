@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rope Climb - Sign In</title>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <link type="text/css" rel="stylesheet" href="sign_up.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <div id="form_container">
+        <div id="title2">
+            <h1>Sign In</h1>
+        </div>
+
+        <div id="inputs">
+            <form>
+                <ul id="ul" style="list-style-type: none">
+                    <li>
+                        <label id="email_label" for="email">Email</label>
+                    </li>
+                    <li>
+                        <input id="email"               name="email"            class="stretch"     onfocus="stretch(0)" onblur="shrink(0)" type="email"    required    />
+                    </li>
+                    <hr>
+                    <li>
+                        <label id="password_label" for="password">Password</label>
+                    </li>
+                    <li>
+                        <input id="password"            name="password"         class="stretch"     onfocus="stretch(1)" onblur="shrink(1)" type="text"     required/>
+                    </li>
+                    <hr>
+                    <li>
+
+                        <input id="submit" name="submit" type="submit">
+                    </li>
+                    <hr>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function stretch(i){
+        var elem = document.getElementsByClassName("stretch")[i];
+        if (elem.style.width != 472 + "px"){
+            var pos = 236;
+            var interval = setInterval(function() {
+                pos += 8;
+                elem.style.width = pos + "px";
+                if(pos >= 472) {
+                    clearInterval(interval);
+                }
+            }, 5);}
+    }
+
+    function shrink(i){
+        var elem = document.getElementsByClassName("stretch")[i];
+        var pos = 472;
+        var interval = setInterval(function() {
+            pos -= 8;
+            elem.style.width = pos + "px";
+            if(pos <= 236) {
+                clearInterval(interval);
+            }
+        }, 5);
+    }
+</script>
+</body>
+</html>
