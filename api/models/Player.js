@@ -8,13 +8,19 @@
 module.exports = {
 
   attributes: {
-    name: {
+    firstName: {
         type: 'text',
         required: true
     },
+    lastName: {
+      type: 'text',
+      required: true
+    },
     email: {
         type: 'email',
-        required: true
+        email: true,
+        required: true,
+        unique: true
     },
     password: {
         type: 'string',
@@ -24,7 +30,7 @@ module.exports = {
         type: 'string',
         required: true,
         size: 15,
-        primaryKey: true
+        unique: true,
     },
     friends: {
       type: 'array',
@@ -32,7 +38,7 @@ module.exports = {
     },
     points: {
       type: 'integer',
-      required: false
+      required: true,
     }
   }
 };

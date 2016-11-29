@@ -1,0 +1,63 @@
+{
+  "data": {
+    "player": [
+      {
+        "firstName": "Calvin",
+        "lastName": "McClure",
+        "email": "random@hotmail.com",
+        "password": "1050917",
+        "username": "woke",
+        "points": 0,
+        "createdAt": "2016-11-28T20:46:05.425Z",
+        "updatedAt": "2016-11-28T20:53:49.834Z"
+      },
+      {
+        "firstName": "Carrie",
+        "lastName": "Dunn",
+        "email": "random@gmail.com",
+        "password": "password",
+        "username": "theMcFly",
+        "points": 0,
+        "createdAt": "2016-11-28T21:19:04.721Z",
+        "updatedAt": "2016-11-28T21:19:04.721Z"
+      }
+    ]
+  },
+  "schema": {
+    "player": {
+      "firstName": {
+        "type": "text"
+      },
+      "lastName": {
+        "type": "text"
+      },
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "username": {
+        "type": "string",
+        "size": 15,
+        "primaryKey": true,
+        "unique": true
+      },
+      "friends": {
+        "type": "array"
+      },
+      "points": {
+        "type": "integer"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "player": {}
+  }
+}

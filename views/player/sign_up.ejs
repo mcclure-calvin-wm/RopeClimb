@@ -14,7 +14,7 @@
             </div>
 
             <div id="inputs">
-                <form action="" method="post">
+                <form action="player/create" method="POST">
                     <ul style="list-style-type: none">
                         <li>
                             <label id="email_label" for="email">Email</label>
@@ -27,39 +27,40 @@
                             <label id="username_label" for="username">Username</label>
                         </li>
                         <li>
-                            <input id="username"            name="username"         class="stretch"     onfocus="stretch(1)" onblur="shrink(1)" type="text"     required/>
+                            <input id="signupUsername"            name="username"         class="stretch"     onfocus="stretch(1)" onblur="shrink(1)" type="text"     required/>
                         </li>
                         <hr>
                         <li>
                             <label id="password_label" for="password">Password</label>
                         </li>
                         <li>
-                            <input id="password"            name="password"         class="stretch"     onfocus="stretch(2)" onblur="shrink(2)" type="password" required/>
+                            <input id="signupPassword"            name="password"         class="stretch"     onfocus="stretch(2)" onblur="shrink(2)" type="password" required/>
                         </li>
                         <hr>
                         <li>
                             <label id="confirm_password_label" for="confirm_password">Confirm Password</label>
                         </li>
                         <li>
-                            <input id="confirm_password"    name="confirm_password" class="stretch"     onfocus="stretch(3)"  onblur="shrink(3)" type="password" required/>
+                            <input id="signupConfirmPassword"    name="confirm_password" class="stretch"     onfocus="stretch(3)"  onblur="shrink(3)" type="password" required/>
                         </li>
                         <hr>
                         <li>
                             <label id="first_name_label" for="first_name">First Name</label>
                         </li>
                         <li>
-                            <input id="first_name"          name="first_name"       class="stretch"     onfocus="stretch(4)" onblur="shrink(4)" type="text"     required/>
+                            <input id="firstName"          name="first_name"       class="stretch"     onfocus="stretch(4)" onblur="shrink(4)" type="text"     required/>
                         </li>
                         <hr>
                         <li>
                             <label id="last_name_label" for="email">Last Name</label>
                         </li>
                         <li>
-                            <input id="last_name"           name="last_name"        class="stretch"     onfocus="stretch(5)" onblur="shrink(5)" type="text"     required/>
+                            <input id="lastName"           name="last_name"        class="stretch"     onfocus="stretch(5)" onblur="shrink(5)" type="text"     required/>
                         </li>
                         <hr>
                         <li>
-                            <input id="submit" name="submit" type="submit">
+                            <input id="signupButton" name="submit" type="submit">
+                            <!-- <input type="hidden" name="_csrf" value="<%= _csrf %>" /> -->
                         </li>
                         <hr>
                     </ul>
@@ -93,6 +94,32 @@
                 }
             }, 5);
         }
+    </script>
+    <script>
+      $("#signupButton").click(function(){
+          var username = $("#signupUsername").val();
+          var password = $("#signupPassword").val();
+          var confirmPassword = $("#signupConfirmPassword").val();
+          var name = $("#firstName").val();
+          var lastname = $("#lastName").val();
+          if (username && password && name && lastname) {
+              if (password === confirmPassword) {
+                  $.post(
+                      '/signup',
+                      {username: username, password:password},
+                      function () {
+                          window.location = "/chat";
+                      }
+                  ).fail(function(res){
+                      alert("Error: " + res.getResponseHeader("error"));
+                  });
+              } else {
+                  alert("Passwords don't match");
+              }
+          } else {
+              alert("A username and password is required");
+          }
+      });
     </script>
 </body>
 </html>

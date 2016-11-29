@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'static/index'
   },
 
   /***************************************************************************
@@ -45,5 +45,15 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /player/:id' : 'PlayerController.getPlayer'
+  'get /player/:id' : 'PlayerController.getPlayer',
+  'get /player/:username' : 'PlayerController.getUsername',
+  'post /register/' : 'PlayerController.create',
+  'get /player/sign_up/' : 'PlayerController.create',
+  'get /player/sign_up' : {
+    view: 'player/sign_up'
+  },
+  // '/signup' : {
+  //        controller: 'main',
+  //        action: 'signup'
+  //   }
 };
